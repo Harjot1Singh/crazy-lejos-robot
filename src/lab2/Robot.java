@@ -2,7 +2,7 @@ package lab2;
 
 import lejos.robotics.subsumption.Arbitrator;
 
-import lab2.Behaviours.MoveForward;
+import lab2.Behaviours.BaseBehaviour;
 import lejos.robotics.subsumption.Behavior;
 
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ public class Robot {
         ArrayList<Behavior> behaviours = new ArrayList<>();
 
         // Add Behaviours
-        behaviours.add(new MoveForward());
+//        behaviours.add(new BaseBehaviour());
 
         return behaviours.toArray(new Behavior[behaviours.size()]);
     }
