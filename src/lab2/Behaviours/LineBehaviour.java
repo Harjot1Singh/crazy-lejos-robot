@@ -5,7 +5,7 @@ import lejos.robotics.RegulatedMotor;
 
 import java.util.Arrays;
 
-public class MoveForward extends BaseBehaviour {
+public class LineBehaviour extends BaseBehaviour {
     private RegulatedMotor[] motors = { Motor.B, Motor.C };
 
     @Override
@@ -15,15 +15,13 @@ public class MoveForward extends BaseBehaviour {
 
     @Override
     public void action() {
-    	
     	Motor.B.forward();
     	Motor.C.forward();
 
         while (!isSupressed()) {
             Thread.yield();
         }
-        
-        Motor.B.stop();
-        Motor.C.stop();
+
     }
 }
+
