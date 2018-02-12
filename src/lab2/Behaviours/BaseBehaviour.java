@@ -25,4 +25,9 @@ public abstract class BaseBehaviour implements Behavior {
     public void suppress() {
         supressed = true;
     }
+
+    @Override
+    public void action() {
+        supressed = false;
+    }
 }

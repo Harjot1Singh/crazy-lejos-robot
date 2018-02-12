@@ -8,6 +8,8 @@ public class MoveForward extends BaseBehaviour {
 
     @Override
     public void action() {
+        super.action();
+
     	leftMotor.forward();
     	rightMotor.forward();
 
