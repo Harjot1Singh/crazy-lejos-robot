@@ -2,6 +2,7 @@ package lab2.Behaviours;
 
 import lejos.nxt.LCD;
 import lejos.nxt.LightSensor;
+import lejos.util.Delay;
 
 /**
  * Behaviour for dealing with junctions.
@@ -31,6 +32,7 @@ public class TakeJunction extends BaseBehaviour {
         leftMotor.forward();
         rightMotor.forward();
         untilNothing();
+        Delay.msDelay(100);
         leftMotor.stop(true);
         rightMotor.stop(true);
 

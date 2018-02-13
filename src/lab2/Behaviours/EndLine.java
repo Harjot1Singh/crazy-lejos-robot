@@ -5,7 +5,7 @@ package lab2.Behaviours;
  * The robot is defined as not being on the line when a certain timeout
  */
 public class EndLine extends BaseBehaviour {
-    private int timeout = 500;
+    private int timeout = 1000;
 
     @Override
     public boolean takeControl() {
@@ -19,7 +19,7 @@ public class EndLine extends BaseBehaviour {
     }
 
     private void resetTimeout() {
-        timeout = 500;
+        timeout = 1000;
     }
 
     @Override
