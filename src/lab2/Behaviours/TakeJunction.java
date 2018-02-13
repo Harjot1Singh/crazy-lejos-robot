@@ -2,7 +2,11 @@ package lab2.Behaviours;
 
 import lejos.nxt.LightSensor;
 
-
+/**
+ * Behaviour for dealing with junctions.
+ * A junction is defined as a line ending with another line non-parallel to it.
+ * The robot should choose a direction randomly, and rotate till it reaches another line.
+ */
 public class TakeJunction extends BaseBehaviour {
     @Override
     public boolean takeControl() {
