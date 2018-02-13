@@ -19,11 +19,11 @@ public class TakeJunction extends BaseBehaviour {
         super.action();
 
         // Select a direction randomly at the junction
-        boolean isRight = Math.random() > 0.5;
-        LightSensor sensor = isRight ? leftSensor : rightSensor;
+        boolean turnRight = Math.random() > 0.5;
+        LightSensor sensor = turnRight ? leftSensor : rightSensor;
 
         // Rotate away from the line, and then until another line is reached
-        rotateAwayFromLine(isRight, sensor);
+        rotateAwayFromLine(turnRight, sensor);
         untilLine(sensor);
 
         // Finally, stop both the motors
@@ -34,12 +34,12 @@ public class TakeJunction extends BaseBehaviour {
     /**
      * Rotates the robot away from the line that the given sensor is on.
      *
-     * @param isRight The direction of rotation. Rotates right if true, left if false.
+     * @param turnRight The direction of rotation. Rotates right if true, left if false.
      * @param sensor  The light sensor that will be rotated away the line.
      */
-    private void rotateAwayFromLine(boolean isRight, LightSensor sensor) {
+    private void rotateAwayFromLine(boolean turnRight, LightSensor sensor) {
         // Set the motors in the correct rotation direction
-        if (isRight) {
+        if (turnRight) {
             leftMotor.forward();
             rightMotor.backward();
         } else {
