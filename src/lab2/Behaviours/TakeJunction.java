@@ -1,5 +1,6 @@
 package lab2.Behaviours;
 
+import lejos.nxt.LCD;
 import lejos.nxt.LightSensor;
 
 /**
@@ -8,16 +9,20 @@ import lejos.nxt.LightSensor;
  * The robot should choose a direction randomly, and rotate till it reaches another line.
  */
 public class TakeJunction extends BaseBehaviour {
+	boolean isTurning = false;
+	
     @Override
     public boolean takeControl() {
         // Check both sensors for a black line
-        return isOverLine(leftSensor) && isOverLine(rightSensor);
+        return isTurning || (isOverLine(leftSensor) && isOverLine(rightSensor));
     }
 
     @Override
     public void action() {
         super.action();
-
+        isTurning = true;
+        
+        LCD.drawString("TakeJunction", 0, 0);
         // Select a direction randomly at the junction
         boolean turnRight = Math.random() > 0.5;
         LightSensor sensor = turnRight ? leftSensor : rightSensor;
@@ -26,6 +31,7 @@ public class TakeJunction extends BaseBehaviour {
         rotateAwayFromLine(turnRight, sensor);
         untilLine(sensor);
 
+        isTurning = false;
         // Finally, stop both the motors
         stop();
     }

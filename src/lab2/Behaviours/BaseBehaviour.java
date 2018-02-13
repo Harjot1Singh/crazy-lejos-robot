@@ -5,14 +5,14 @@ import lejos.robotics.RegulatedMotor;
 import lejos.robotics.subsumption.Behavior;
 
 public abstract class BaseBehaviour implements Behavior {
-    final static private int lineThreshold = 35;
+    final static private int lineThreshold = 45;
 
-    final static RegulatedMotor leftMotor = Motor.B;
-    final static RegulatedMotor rightMotor = Motor.C;
+    final static RegulatedMotor leftMotor = Motor.C;
+    final static RegulatedMotor rightMotor = Motor.A;
 
-    final static LightSensor leftSensor = new LightSensor(SensorPort.S1);
+    final static LightSensor leftSensor = new LightSensor(SensorPort.S3);
     final static LightSensor rightSensor = new LightSensor(SensorPort.S2);
-    final static UltrasonicSensor soundSensor = new UltrasonicSensor(SensorPort.S3);
+    final static UltrasonicSensor soundSensor = new UltrasonicSensor(SensorPort.S1);
 
     private boolean supressed = false;
 

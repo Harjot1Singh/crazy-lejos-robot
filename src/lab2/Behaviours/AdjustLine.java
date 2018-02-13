@@ -1,5 +1,6 @@
 package lab2.Behaviours;
 
+import lejos.nxt.LCD;
 import lejos.nxt.LightSensor;
 
 /**
@@ -11,11 +12,14 @@ public class AdjustLine extends BaseBehaviour {
 
     @Override
     public boolean takeControl() {
+    	
         return isOverLine(leftSensor) || isOverLine(rightSensor);
     }
 
     @Override
     public void action() {
+    	super.action();
+    	LCD.drawString("AdjustLine", 0, 0);
         boolean turnRight = isOverLine(rightSensor);
         LightSensor sensor = turnRight ? rightSensor : leftSensor;
 

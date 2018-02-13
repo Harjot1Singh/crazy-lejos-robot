@@ -1,5 +1,7 @@
 package lab2.Behaviours;
 
+import lejos.nxt.LCD;
+
 /**
  * Behaviour for continually moving forwards.
  */
@@ -12,6 +14,7 @@ public class MoveForward extends BaseBehaviour {
     @Override
     public void action() {
         super.action();
+        LCD.drawString("MoveForward", 0, 0);
 
     	leftMotor.forward();
     	rightMotor.forward();
