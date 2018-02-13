@@ -27,8 +27,7 @@ public class TakeJunction extends BaseBehaviour {
         untilLine(sensor);
 
         // Finally, stop both the motors
-        leftMotor.stop(true);
-        rightMotor.stop(true);
+        stop();
     }
 
     /**
@@ -39,13 +38,7 @@ public class TakeJunction extends BaseBehaviour {
      */
     private void rotateAwayFromLine(boolean turnRight, LightSensor sensor) {
         // Set the motors in the correct rotation direction
-        if (turnRight) {
-            leftMotor.forward();
-            rightMotor.backward();
-        } else {
-            leftMotor.backward();
-            rightMotor.forward();
-        }
+        rotate(turnRight);
 
         while (!isSupressed() && isOverLine(sensor)) {
             Thread.yield();
