@@ -10,7 +10,7 @@ import lejos.nxt.LightSensor;
  */
 public class TakeJunction extends BaseBehaviour {
 	boolean isTurning = false;
-	
+
     @Override
     public boolean takeControl() {
         // Check both sensors for a black line
@@ -21,11 +21,18 @@ public class TakeJunction extends BaseBehaviour {
     public void action() {
         super.action();
         isTurning = true;
-        
+
         LCD.drawString("TakeJunction", 0, 0);
         // Select a direction randomly at the junction
         boolean turnRight = Math.random() > 0.5;
         LightSensor sensor = turnRight ? leftSensor : rightSensor;
+
+        // Move forward until the junction disappears
+        leftMotor.forward();
+        rightMotor.forward();
+        untilNothing();
+        leftMotor.stop(true);
+        rightMotor.stop(true);
 
         // Rotate away from the line, and then until another line is reached
         rotateAwayFromLine(turnRight, sensor);
@@ -47,6 +54,15 @@ public class TakeJunction extends BaseBehaviour {
         rotate(turnRight);
 
         while (!isSupressed() && isOverLine(sensor)) {
+            Thread.yield();
+        }
+    }
+
+    /**
+     * Blocks until the robot is not on the line for any sensor.
+     */
+    private void untilNothing() {
+        while (!isSupressed() && !isOverLine(leftSensor) && !isOverLine(rightSensor)) {
             Thread.yield();
         }
     }
