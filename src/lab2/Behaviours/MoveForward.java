@@ -1,5 +1,8 @@
 package lab2.Behaviours;
 
+/**
+ * Behaviour for continually moving forwards.
+ */
 public class MoveForward extends BaseBehaviour {
     @Override
     public boolean takeControl() {
