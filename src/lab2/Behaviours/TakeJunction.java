@@ -1,7 +1,6 @@
 package lab2.Behaviours;
 
 import lejos.nxt.LightSensor;
-import lejos.robotics.RegulatedMotor;
 
 
 public class TakeJunction extends BaseBehaviour {
