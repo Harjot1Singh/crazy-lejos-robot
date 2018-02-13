@@ -17,7 +17,7 @@ public class MoveForward extends BaseBehaviour {
             Thread.yield();
         }
 
-        leftMotor.stop();
-        rightMotor.stop();
+        leftMotor.stop(true);
+        rightMotor.stop(true);
     }
 }
