@@ -5,12 +5,14 @@ import lejos.robotics.RegulatedMotor;
 import lejos.robotics.subsumption.Behavior;
 
 public abstract class BaseBehaviour implements Behavior {
-    final protected RegulatedMotor leftMotor = Motor.B;
-    final protected RegulatedMotor rightMotor = Motor.C;
+    final static private int lineThreshold = 35;
 
-    final protected LightSensor leftSensor = new LightSensor(SensorPort.S1);
-    final protected LightSensor rightSensor = new LightSensor(SensorPort.S2);
-    final protected UltrasonicSensor soundSensor = new UltrasonicSensor(SensorPort.S3);
+    final static RegulatedMotor leftMotor = Motor.B;
+    final static RegulatedMotor rightMotor = Motor.C;
+
+    final static LightSensor leftSensor = new LightSensor(SensorPort.S1);
+    final static LightSensor rightSensor = new LightSensor(SensorPort.S2);
+    final static UltrasonicSensor soundSensor = new UltrasonicSensor(SensorPort.S3);
 
     private boolean supressed = false;
 
@@ -26,5 +28,9 @@ public abstract class BaseBehaviour implements Behavior {
     @Override
     public void action() {
         supressed = false;
+    }
+
+    protected boolean isOverLine(LightSensor sensor) {
+        return sensor.readValue() < lineThreshold;
     }
 }
