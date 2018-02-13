@@ -1,6 +1,7 @@
 package lab2;
 
 import lab2.Behaviours.AdjustLine;
+import lab2.Behaviours.EndLine;
 import lab2.Behaviours.TakeJunction;
 import lejos.robotics.subsumption.Behavior;
 import lejos.robotics.subsumption.Arbitrator;
@@ -12,6 +13,7 @@ public class Robot {
             new MoveForward(),
             new AdjustLine(),
             new TakeJunction(),
+            new EndLine(),
     };
 
 
