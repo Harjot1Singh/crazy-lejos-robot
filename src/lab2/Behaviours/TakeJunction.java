@@ -29,12 +29,15 @@ public class TakeJunction extends BaseBehaviour {
         LightSensor sensor = turnRight ? leftSensor : rightSensor;
 
         // Move forward until the junction disappears
-        leftMotor.forward();
-        rightMotor.forward();
+        pilot.setTravelSpeed(5);
+        pilot.forward();
+        //leftMotor.forward();
+        //rightMotor.forward();
         untilNothing();
         Delay.msDelay(100);
-        leftMotor.stop(true);
-        rightMotor.stop(true);
+        pilot.stop();
+        //leftMotor.stop(true);
+        //rightMotor.stop(true);
 
         // Rotate away from the line, and then until another line is reached
         rotateAwayFromLine(turnRight, sensor);
@@ -42,7 +45,6 @@ public class TakeJunction extends BaseBehaviour {
 
         isTurning = false;
         // Finally, stop both the motors
-        stop();
     }
 
     /**

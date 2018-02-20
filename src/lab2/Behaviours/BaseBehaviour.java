@@ -2,17 +2,20 @@ package lab2.Behaviours;
 
 import lejos.nxt.*;
 import lejos.robotics.RegulatedMotor;
+import lejos.robotics.navigation.DifferentialPilot;
 import lejos.robotics.subsumption.Behavior;
 
 public abstract class BaseBehaviour implements Behavior {
     final static private int lineThreshold = 45;
 
-    final static RegulatedMotor leftMotor = Motor.C;
+    final static RegulatedMotor leftMotor = Motor.B;
     final static RegulatedMotor rightMotor = Motor.A;
 
-    final static LightSensor leftSensor = new LightSensor(SensorPort.S3);
-    final static LightSensor rightSensor = new LightSensor(SensorPort.S2);
-    final static UltrasonicSensor soundSensor = new UltrasonicSensor(SensorPort.S1);
+    final static LightSensor leftSensor = new LightSensor(SensorPort.S2);
+    final static LightSensor rightSensor = new LightSensor(SensorPort.S3);
+    final static UltrasonicSensor ultraSensor = new UltrasonicSensor(SensorPort.S1);
+    
+    static DifferentialPilot pilot = new DifferentialPilot(2.1f, 4.4f, Motor.A, Motor.B, false);
 
     private boolean supressed = false;
 
@@ -45,20 +48,15 @@ public abstract class BaseBehaviour implements Behavior {
      * @param turnRight If true, rotates right, else left.
      */
     void rotate(boolean turnRight) {
+    	pilot.setRotateSpeed(90);
         if (turnRight) {
-            rightMotor.backward();
-            leftMotor.forward();
+        	pilot.rotateRight();
+            //rightMotor.backward();
+            //leftMotor.forward();
         } else {
-            rightMotor.forward();
-            leftMotor.backward();
+        	pilot.rotateLeft();
+            //rightMotor.forward();
+            //leftMotor.backward();
         }
-    }
-
-    /**
-     * Immediately stops any motor movement.
-     */
-    void stop() {
-        leftMotor.stop(true);
-        rightMotor.stop(true);
     }
 }

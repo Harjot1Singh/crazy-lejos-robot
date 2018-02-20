@@ -15,14 +15,12 @@ public class MoveForward extends BaseBehaviour {
     public void action() {
         super.action();
         LCD.drawString("MoveForward", 0, 0);
-
-    	leftMotor.forward();
-    	rightMotor.forward();
+        
+        pilot.setTravelSpeed(5);
+        pilot.forward();
 
         while (!isSupressed()) {
             Thread.yield();
         }
-
-        stop();
     }
 }

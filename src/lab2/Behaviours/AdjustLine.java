@@ -30,9 +30,6 @@ public class AdjustLine extends BaseBehaviour {
         while (!isSupressed() && isOverLine(sensor)) {
             Thread.yield();
         }
-
-        stop();
-        // If 360 has been done, the line has ended??
         // System.exit(0);
     }
 }

@@ -1,5 +1,7 @@
 package lab2.Behaviours;
 
+import lejos.nxt.LCD;
+
 /**
  * Behaviour to detect when the robot is no longer on the line.
  * The robot is defined as not being on the line when a certain timeout
@@ -25,8 +27,7 @@ public class EndLine extends BaseBehaviour {
     @Override
     public void action() {
     	super.action();
-
-    	stop();
+    	 LCD.drawString("EndLine", 0, 0);
     	System.exit(0);
     }
 }
