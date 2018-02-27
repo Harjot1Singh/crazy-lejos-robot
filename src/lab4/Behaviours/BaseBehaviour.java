@@ -3,10 +3,13 @@ package lab4.Behaviours;
 import lejos.nxt.*;
 import lejos.robotics.RegulatedMotor;
 import lejos.robotics.navigation.DifferentialPilot;
+import lejos.robotics.objectdetection.FeatureDetector;
+import lejos.robotics.objectdetection.RangeFeatureDetector;
 import lejos.robotics.subsumption.Behavior;
 
 public abstract class BaseBehaviour implements Behavior {
     final static private int lineThreshold = 45;
+    final static private int objectDistance = 15;
 
     private final static RegulatedMotor leftMotor = Motor.B;
     private final static RegulatedMotor rightMotor = Motor.A;
@@ -16,6 +19,8 @@ public abstract class BaseBehaviour implements Behavior {
     final static UltrasonicSensor ultraSensor = new UltrasonicSensor(SensorPort.S1);
 
     static DifferentialPilot pilot = new DifferentialPilot(2.1f, 4.4f, leftMotor, rightMotor, false);
+
+    static FeatureDetector detector = new RangeFeatureDetector(ultraSensor, objectDistance,250);
 
     private boolean supressed = false;
 
