@@ -8,7 +8,6 @@ import lejos.robotics.objectdetection.FeatureListener;
 public class AvoidObject extends BaseBehaviour {
     private boolean objectDetected = false;
 
-
     public AvoidObject() {
         // Add a listener to deal with objects
         detector.addListener((feature, detector) -> objectDetected = true);

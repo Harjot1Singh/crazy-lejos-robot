@@ -9,9 +9,9 @@ public class Robot {
     private static Behavior[] behaviors = {
             new MoveForward(),
             new AdjustLine(),
-//            new TakeJunction(),
+            new TakeJunction(),
 //            new EndLine(),
-//    		new AvoidObject(),
+    		new AvoidObject(),
     };
 
 
