@@ -10,7 +10,7 @@ import lejos.util.Delay;
  * The robot should choose a direction randomly, and rotate till it reaches another line.
  */
 public class TakeJunction extends BaseBehaviour {
-	boolean isTurning = false;
+	private boolean isTurning = false;
 
     @Override
     public boolean takeControl() {

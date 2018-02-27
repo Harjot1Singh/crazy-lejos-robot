@@ -8,8 +8,8 @@ import lejos.robotics.subsumption.Behavior;
 public abstract class BaseBehaviour implements Behavior {
     final static private int lineThreshold = 45;
 
-    final static RegulatedMotor leftMotor = Motor.B;
-    final static RegulatedMotor rightMotor = Motor.A;
+    private final static RegulatedMotor leftMotor = Motor.B;
+    private final static RegulatedMotor rightMotor = Motor.A;
 
     final static LightSensor leftSensor = new LightSensor(SensorPort.S2);
     final static LightSensor rightSensor = new LightSensor(SensorPort.S3);
