@@ -1,6 +1,5 @@
 package lab4.Behaviours;
 
-import lab2.Behaviours.BaseBehaviour;
 import lejos.nxt.LCD;
 import lejos.nxt.LightSensor;
 import lejos.util.Delay;
