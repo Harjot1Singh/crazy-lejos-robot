@@ -1,8 +1,8 @@
-package lab2;
+package lab4;
 
-import lab2.Behaviours.*;
-import lejos.robotics.subsumption.Behavior;
+import lab4.Behaviours.*;
 import lejos.robotics.subsumption.Arbitrator;
+import lejos.robotics.subsumption.Behavior;
 
 public class Robot {
     private static Behavior[] behaviors = {
@@ -10,6 +10,7 @@ public class Robot {
             new AdjustLine(),
             new TakeJunction(),
             new EndLine(),
+    		new AvoidObject(),
     };
 
 

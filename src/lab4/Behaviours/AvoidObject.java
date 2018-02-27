@@ -1,4 +1,6 @@
-package lab2.Behaviours;
+package lab4.Behaviours;
+
+import lab2.Behaviours.BaseBehaviour;
 
 public class AvoidObject extends BaseBehaviour {
 	private final static int threshold = 800;
