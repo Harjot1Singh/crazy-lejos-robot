@@ -2,6 +2,8 @@ package lab4.Behaviours;
 
 import lejos.nxt.LCD;
 import lejos.nxt.LightSensor;
+import lejos.robotics.localization.OdometryPoseProvider;
+import lejos.robotics.localization.PoseProvider;
 
 /**
  * Behaviour to adjust the robot to stay on the line.
@@ -9,17 +11,18 @@ import lejos.nxt.LightSensor;
  * The robot should rotate in the opposite direction until the light sensor is no longer over the line.
  */
 public class AdjustLine extends BaseBehaviour {
+    PoseProvider p = new OdometryPoseProvider(pilot);
 
     @Override
     public boolean takeControl() {
-
         return isOverLine(leftSensor) || isOverLine(rightSensor);
     }
 
     @Override
     public void action() {
     	super.action();
-    	LCD.drawString("AdjustLine", 0, 0);
+        LCD.drawString("AdjustLine", 0, 0);
+        LCD.drawString(p.getPose().toString(), 0, 5);
         boolean turnRight = isOverLine(rightSensor);
         LightSensor sensor = turnRight ? rightSensor : leftSensor;
 
