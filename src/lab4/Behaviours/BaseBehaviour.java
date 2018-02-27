@@ -2,7 +2,10 @@ package lab4.Behaviours;
 
 import lejos.nxt.*;
 import lejos.robotics.RegulatedMotor;
+import lejos.robotics.localization.OdometryPoseProvider;
+import lejos.robotics.localization.PoseProvider;
 import lejos.robotics.navigation.DifferentialPilot;
+import lejos.robotics.navigation.Pose;
 import lejos.robotics.objectdetection.FeatureDetector;
 import lejos.robotics.objectdetection.RangeFeatureDetector;
 import lejos.robotics.subsumption.Behavior;
@@ -19,10 +22,16 @@ public abstract class BaseBehaviour implements Behavior {
     final static UltrasonicSensor ultraSensor = new UltrasonicSensor(SensorPort.S1);
 
     static DifferentialPilot pilot = new DifferentialPilot(2.1f, 4.4f, leftMotor, rightMotor, false);
+    static PoseProvider poseProvider = new OdometryPoseProvider(pilot);
 
     static FeatureDetector detector = new RangeFeatureDetector(ultraSensor, objectDistance,250);
 
     private boolean supressed = false;
+
+    public BaseBehaviour() {
+        super();
+        poseProvider.setPose(new Pose());
+    }
 
     boolean isSupressed() {
         return supressed;
