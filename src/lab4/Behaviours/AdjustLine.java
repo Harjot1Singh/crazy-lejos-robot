@@ -15,7 +15,7 @@ public class AdjustLine extends BaseBehaviour {
 
     @Override
     public boolean takeControl() {
-        LCD.drawString(p.getPose().toString(), 0, 5);
+        LCD.drawString(p.getPose().toString(), 0, 1);
         return isOverLine(leftSensor) || isOverLine(rightSensor);
     }
 
