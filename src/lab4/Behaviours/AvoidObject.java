@@ -27,7 +27,18 @@ public class AvoidObject extends BaseBehaviour {
 	public void action() {
 		super.action();
 		LCD.drawString("AvoidObject", 0, 0);
-		pilot.rotate(180);
+
+		rotate(true);
+
+        // Until the sensor is no over the line
+        while (!isOverLine(rightSensor)) {
+            Thread.yield();
+        }
+
+        while (isOverLine(rightSensor)) {
+            Thread.yield();
+        }
+
 		objectDetected = false;
 	}
 }
