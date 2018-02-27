@@ -14,8 +14,8 @@ public abstract class BaseBehaviour implements Behavior {
     final static LightSensor leftSensor = new LightSensor(SensorPort.S2);
     final static LightSensor rightSensor = new LightSensor(SensorPort.S3);
     final static UltrasonicSensor ultraSensor = new UltrasonicSensor(SensorPort.S1);
-    
-    static DifferentialPilot pilot = new DifferentialPilot(2.1f, 4.4f, Motor.A, Motor.B, false);
+
+    static DifferentialPilot pilot = new DifferentialPilot(2.1f, 4.4f, leftMotor, rightMotor, false);
 
     private boolean supressed = false;
 
@@ -42,7 +42,6 @@ public abstract class BaseBehaviour implements Behavior {
         return sensor.readValue() < lineThreshold;
     }
 
-
     /**
      * Rotates the robot on the spot.
      * @param turnRight If true, rotates right, else left.
@@ -51,12 +50,8 @@ public abstract class BaseBehaviour implements Behavior {
     	pilot.setRotateSpeed(90);
         if (turnRight) {
         	pilot.rotateRight();
-            //rightMotor.backward();
-            //leftMotor.forward();
         } else {
         	pilot.rotateLeft();
-            //rightMotor.forward();
-            //leftMotor.backward();
         }
     }
 }
