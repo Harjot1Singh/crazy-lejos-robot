@@ -10,7 +10,12 @@ public class AvoidObject extends BaseBehaviour {
 
     public AvoidObject() {
         // Add a listener to deal with objects
-        detector.addListener((feature, detector) -> objectDetected = true);
+        detector.addListener(new FeatureListener() {
+            @Override
+            public void featureDetected(Feature feature, FeatureDetector detector) {
+                objectDetected = true;
+            }
+        });
     }
 
     @Override
